@@ -27,8 +27,8 @@
       "disk_interface": "virtio",
       "net_device": "virtio-net",
 
-      "iso_url": "http://mirrors.fibergrid.in/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-NetInstall-1810.iso",
-      "iso_checksum": "19d94274ef856c4dfcacb2e7cfe4be73e442a71dd65cc3fb6e46db826040b56e",
+      "iso_url": "https://mirror.cuegee.com/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso", 
+      "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
       "iso_checksum_type": "sha256",
 
       "vm_name": "monkeybox-centos7-kvm",
