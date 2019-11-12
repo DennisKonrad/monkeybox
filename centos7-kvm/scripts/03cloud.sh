@@ -40,7 +40,7 @@ cat > /etc/sysconfig/network-scripts/ifcfg-cloudbr0 <<EOF
 TYPE=Bridge
 DEVICE=cloudbr0
 ONBOOT=yes
-BOOTPROTO=dhcp
+BOOTPROTO=static
 IPADDR=172.20.1.10
 NETMASK=255.255.0.0
 GATEWAY=172.20.0.1
