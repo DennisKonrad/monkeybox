@@ -52,6 +52,8 @@ NM_CONTROLLED=no
 EOF
 
 # Setup nat for agent via qemu hook
+mkdir -p /etc/libvirt/hooks/
+touch /etc/libvirt/hooks/qemu
 cat > /etc/libvirt/hooks/qemu <<EOF
 #!/bin/bash
 # used some from advanced script to have multiple ports: use an equal number of guest and host ports
