@@ -51,6 +51,40 @@ USERCTL=no
 NM_CONTROLLED=no
 EOF
 
+# Setup nat for agent via qemu hook
+cat > /etc/libvirt/hooks/qemu <<EOF
+#!/bin/bash
+# used some from advanced script to have multiple ports: use an equal number of guest and host ports
+
+echo `date` hook/qemu "${1}" "${2}" >>/root/hook.log
+
+### kvm01
+Guest_name=master-centos7-kvm1
+Guest_ipaddr=172.20.1.10
+Host_port=(  '8001' )
+Guest_port=( '8000' )
+
+
+length=$(( ${#Host_port[@]} - 1 ))
+if [ "${1}" = "${Guest_name}" ]; then
+	if [ "${2}" = "stopped" ] || [ "${2}" = "reconnect" ]; then
+	    for i in `seq 0 $length`; do
+		    echo "Stopped $Guest_name. Cleaning iptables" >>/root/hook.log
+		    /sbin/iptables -D FORWARD -o virbr1 -d  ${Guest_ipaddr} -j ACCEPT
+		    /sbin/iptables -t nat -D PREROUTING -p tcp --dport ${Host_port[$i]} -j DNAT --to ${Guest_ipaddr}:${Guest_port[$i]}
+	    done
+	fi
+	if [ "${2}" = "start" ] || [ "${2}" = "reconnect" ]; then
+	    for i in `seq 0 $length`; do
+		    echo "Stopped $Guest_name. Adding rules to iptables" >>/root/hook.log
+		    /sbin/iptables -I FORWARD -o virbr1 -d  ${Guest_ipaddr} -j ACCEPT
+		    /sbin/iptables -t nat -I PREROUTING -p tcp --dport ${Host_port[$i]} -j DNAT --to ${Guest_ipaddr}:${Guest_port[$i]}
+	    done
+	fi
+fi
+EOF
+chmod +x /etc/libvirt/hooks/qemu
+
 # Setup iptables
 iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8096 -j ACCEPT
