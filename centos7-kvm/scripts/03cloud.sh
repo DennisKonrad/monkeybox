@@ -60,8 +60,8 @@ cat > /etc/libvirt/hooks/qemu <<'EOF'
 
 echo `date` hook/qemu "${1}" "${2}" >>/root/hook.log
 
-### kvm01
-Guest_name=master-centos7-kvm1
+### some router 
+#Guest_name=master-centos7-kvm1
 Guest_ipaddr=172.20.1.10
 Host_port=(  '8001' )
 Guest_port=( '8000' )
@@ -88,6 +88,7 @@ EOF
 chmod +x /etc/libvirt/hooks/qemu
 
 # Setup iptables
+iptables -I INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8096 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8787 -j ACCEPT
