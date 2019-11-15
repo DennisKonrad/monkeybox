@@ -129,6 +129,7 @@ JAVA_HEAP_INITIAL=256m
 JAVA_HEAP_MAX=2048m
 JAVA_CLASS=com.cloud.agent.AgentShell
 JAVA_TMPDIR=/usr/share/cloudstack-agent/tmp
+JAVA_DEBUG="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n"
 EOF
 
 cat > /usr/lib/systemd/system/cloudstack-agent.service <<EOF
@@ -141,7 +142,7 @@ After=libvirtd.service
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/cloudstack-agent
-ExecStart=/bin/sh -ec 'export ACP=\`ls /usr/share/cloudstack-agent/lib/*.jar /usr/share/cloudstack-agent/plugins/*.jar 2>/dev/null|tr "\\n" ":"\`; export CLASSPATH="\$ACP:/etc/cloudstack/agent:/usr/share/cloudstack-common/scripts"; mkdir -m 0755 -p \${JAVA_TMPDIR}; \${JAVA} -Djava.io.tmpdir="\${JAVA_TMPDIR}" -Xms\${JAVA_HEAP_INITIAL} -Xmx\${JAVA_HEAP_MAX} -cp "\$CLASSPATH" \$JAVA_CLASS'
+ExecStart=/bin/sh -ec 'export ACP=\`ls /usr/share/cloudstack-agent/lib/*.jar /usr/share/cloudstack-agent/plugins/*.jar 2>/dev/null|tr "\\n" ":"\`; export CLASSPATH="\$ACP:/etc/cloudstack/agent:/usr/share/cloudstack-common/scripts"; mkdir -m 0755 -p \${JAVA_TMPDIR}; \${JAVA} \${JAVA_DEBUG} -Djava.io.tmpdir="\${JAVA_TMPDIR}" -Xms\${JAVA_HEAP_INITIAL} -Xmx\${JAVA_HEAP_MAX} -cp "\$CLASSPATH" \$JAVA_CLASS'
 Restart=always
 RestartSec=10s
 
