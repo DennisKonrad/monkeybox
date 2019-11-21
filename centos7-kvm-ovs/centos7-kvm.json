@@ -1,0 +1,60 @@
+{
+  "description": "CentOS 7 x86_64 MonkeyBox KVM w OvS",
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/00base.sh",
+        "scripts/01grub.sh",
+        "scripts/02sshd.sh",
+        "scripts/03cloud.sh",
+        "scripts/99cleanup.sh",
+        "scripts/99minimize.sh"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "qemu",
+      "accelerator": "kvm",
+      "headless": true,
+      "qemuargs": [
+        [ "-m", "2048M" ],
+        [ "-smp", "cpus=1,maxcpus=4,cores=2" ]
+      ],
+      "disk_size": 20480,
+      "format": "qcow2",
+      "disk_interface": "virtio",
+      "net_device": "virtio-net",
+
+      "iso_url": "https://mirror.cuegee.com/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso", 
+      "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
+      "iso_checksum_type": "sha256",
+
+      "vm_name": "monkeybox-centos7-kvm",
+      "output_directory": "dist",
+
+      "http_directory": "http",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+
+      "ssh_username": "root",
+      "ssh_password": "password",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "30m",
+
+      "boot_wait": "10s",
+      "boot_command": [
+        "<esc>",
+        "<wait>",
+        "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/kickstart.cfg biosdevname=0 net.ifnames=0",
+        "<enter>"
+      ],
+
+      "shutdown_command": "shutdown -P now"
+    }
+  ]
+}
