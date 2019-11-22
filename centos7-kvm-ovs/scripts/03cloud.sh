@@ -3,7 +3,7 @@ set -exu
 # KVM and CloudStack agent dependencies
 yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl
 
-cat > /etc/yum.repos.d/openstack-stein << EOF
+cat > /etc/yum.repos.d/openstack-stein.repo << EOF
 [openstack-stein]
 name=added from: http://mirror.centos.org/centos-7/7.7.1908/cloud/x86_64/openstack-stein/
 baseurl=http://mirror.centos.org/centos-7/7.7.1908/cloud/x86_64/openstack-stein/
