@@ -12,7 +12,6 @@ gpgcheck=0
 EOF
 
 # OvS
-cat /etc/yum.repos.d/openstack-stein.repo
 yum clean all
 yum -y install openvswitch 
 systemctl enable openvswitch
