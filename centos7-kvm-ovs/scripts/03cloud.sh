@@ -13,7 +13,7 @@ EOF
 
 # OvS
 yum clean all
-yum -y install openvswitch 
+yum install -y openvswitch 
 systemctl enable openvswitch
 
 
