@@ -147,7 +147,7 @@ mkdir -p /usr/lib64/python2.7/site-packages/
 mkdir -p /usr/share/cloudstack-common/scripts/
 mkdir -p /usr/share/cloudstack-common/vms/
 mkdir -p /usr/share/cloudstack-common/lib/
-wget -O /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar https://central.maven.org/maven2/org/jasypt/jasypt/1.9.2/jasypt-1.9.2.jar
+wget --no-check-certificate -O /usr/share/cloudstack-common/lib/jasypt-1.9.2.jar https://central.maven.org/maven2/org/jasypt/jasypt/1.9.2/jasypt-1.9.2.jar
 
 cat > /etc/default/cloudstack-agent <<EOF
 JAVA=/usr/bin/java
