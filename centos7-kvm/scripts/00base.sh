@@ -18,5 +18,5 @@ hostnamectl set-hostname localhost --static
 
 # Setup public key access
 mkdir -pm 700 /root/.ssh
-curl https://api.github.com/users/rhtyd/keys | jq -r '.[].key' > /root/.ssh/authorized_keys
+#curl https://api.github.com/users/rhtyd/keys | jq -r '.[].key' > /root/.ssh/authorized_keys
 chmod -R go-rwsx /root/.ssh

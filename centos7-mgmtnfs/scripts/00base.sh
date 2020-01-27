@@ -4,8 +4,8 @@ yum -y update
 
 cat > /etc/motd << EOF
 
-   __?.o/  CentOS 7 KVM MonkeyBox
-  (  )#    Built from https://github.com/rhtyd/monkeybox.git
+   __?.o/  CentOS 7 Cloudstack Management & NFS {MonkeyBox}
+  (  )#    Built from https://github.com/denniskonrad/monkeybox.git
  (___(_)   Happy CloudStack hacking!
 
 EOF
@@ -18,6 +18,5 @@ hostnamectl set-hostname localhost --static
 
 # Setup public key access
 mkdir -pm 700 /root/.ssh
-# TODO ...
-# curl https://api.github.com/users/rhtyd/keys | jq -r '.[].key' > /root/.ssh/authorized_keys
+#curl https://api.github.com/users/rhtyd/keys | jq -r '.[].key' > /root/.ssh/authorized_keys
 chmod -R go-rwsx /root/.ssh
