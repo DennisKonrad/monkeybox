@@ -57,12 +57,8 @@ DEVICETYPE=ovs
 TYPE=OVSBridge
 ONBOOT=yes
 BOOTPROTO=static
-IPADDR0=172.20.1.10
-PREFIX0=16
-IPADDR1=172.20.128.10
-PREFIX1=16
-IPADDR2=172.20.129.10
-PREFIX2=16
+IPADDR=172.20.1.10
+PREFIX=16
 GATEWAY=172.20.0.1
 DNS1=1.1.1.1
 NM_CONTROLLED=no
@@ -79,9 +75,6 @@ NETMASK=255.255.0.0
 NM_CONTROLLED=no
 HOTPLUG=no
 EOF
-
-# Disable Reverse Path Filtering on host
-sed -i 's/rp_filter = 1/rp_filter = 0/g' /usr/lib/sysctl.d/50-default.conf
 
 # Setup nat for agent via qemu hook
 mkdir -p /etc/libvirt/hooks/
