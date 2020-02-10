@@ -101,7 +101,7 @@ projectid=$(cmk create project name=$name displaytext=$name | jq -r '.project.id
 
 ## Create Monkey Network
 netoffid=$(cmk list networkofferings zoneid=$zoneid guestiptype=Isolated supportedservices=SourceNat state=Enabled | jq -r '.networkoffering[0].id')
-networkid=$(cmk create network projectid=$projectid zoneid=$zoneid name=net-$name displaytext=net-$name networkofferingid=$netoffid gateway="172.20.0.1" netmask="255.255.128.0" | jq -r '.network.id')
+networkid=$(cmk create network projectid=$projectid zoneid=$zoneid name=net-$name displaytext=net-$name networkofferingid=$netoffid gateway="172.20.0.1" netmask="255.255.0.0" | jq -r '.network.id')
 cmk create egressfirewallrule projectid=$projectid networkid=$networkid cidrlist="0.0.0.0/0" destcidrlist="0.0.0.0/0" protocol=all > /dev/null
 
 ## Deploy MonkeyBoxes
