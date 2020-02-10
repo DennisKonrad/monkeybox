@@ -80,6 +80,9 @@ NM_CONTROLLED=no
 HOTPLUG=no
 EOF
 
+# Disable Reverse Path Filtering on host
+sed -i 's/rp_filter = 1/rp_filter = 0/g' /usr/lib/sysctl.d/50-default.conf
+
 # Setup nat for agent via qemu hook
 mkdir -p /etc/libvirt/hooks/
 touch /etc/libvirt/hooks/qemu
