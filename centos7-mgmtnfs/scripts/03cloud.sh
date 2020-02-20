@@ -5,7 +5,11 @@ yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-net
 
 # Management server dependecies and services
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
-systemctl disable mariadb
+systemctl enable mariadb
+
+# Create NFS export
+echo "/export  *(rw,async,no_root_squash,no_subtree_check)" > /etc/exports
+mkdir -p /export/testing/primary /export/testing/secondary
 
 # Install cloudmonkey
 wget -O /bin/cmk https://github.com/apache/cloudstack-cloudmonkey/releases/download/6.0.0/cmk.linux.x86-64
@@ -32,6 +36,9 @@ TYPE=Ethernet
 DEVICE=eth0
 ONBOOT=yes
 BOOTPROTO=static
+IPADDR=172.20.1.2
+NETMASK=255.255.0.0
+GATEWAY=172.20.0.1
 BRIDGE=cloudbr0
 NM_CONTROLLED=no
 EOF
