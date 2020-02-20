@@ -20,7 +20,7 @@
       "headless": true,
       "qemuargs": [
         [ "-m", "2048M" ],
-        [ "-smp", "cpus=1,maxcpus=4,cores=2" ]
+        [ "-smp", "cpus=4" ]
       ],
       "disk_size": 20480,
       "format": "qcow2",
