@@ -19,7 +19,7 @@
       "accelerator": "kvm",
       "headless": true,
       "qemuargs": [
-        [ "-m", "2048M" ],
+        [ "-m", "4096M" ],
         [ "-smp", "cpus=4" ]
       ],
       "disk_size": 20480,
@@ -31,7 +31,7 @@
       "iso_checksum": "9a2c47d97b9975452f7d582264e9fc16d108ed8252ac6816239a3b58cef5c53d",
       "iso_checksum_type": "sha256",
 
-      "vm_name": "monkeybox-centos7-kvm",
+      "vm_name": "monkeybox-centos7-mgmt",
       "output_directory": "dist",
 
       "http_directory": "http",
