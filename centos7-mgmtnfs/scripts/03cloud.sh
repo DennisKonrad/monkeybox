@@ -1,7 +1,7 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl
+yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools ebtables ethtool iproute ipset iptables openssh-clients perl qemu-img libuuid glibc nss-softokn-freebl
 
 # Management server dependecies and services
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
@@ -39,7 +39,6 @@ BOOTPROTO=static
 IPADDR=172.20.1.2
 NETMASK=255.255.0.0
 GATEWAY=172.20.0.1
-BRIDGE=cloudbr0
 NM_CONTROLLED=no
 EOF
 
