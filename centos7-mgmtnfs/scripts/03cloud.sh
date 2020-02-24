@@ -7,6 +7,9 @@ yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-net
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
 systemctl enable mariadb
 
+# CloudStack Development Tools
+yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-server mysql-client bzip2 nfs-common uuid-runtime python-setuptools ipmitool genisoimage nfs-kernel-server quota
+
 # Create NFS export
 echo "/export  *(rw,async,no_root_squash,no_subtree_check)" > /etc/exports
 mkdir -p /export/testing/primary /export/testing/secondary
@@ -26,9 +29,10 @@ sed -i "/\[mysqld\]/a max_connections=700" /etc/my.cnf
 sed -i "/\[mysqld\]/a log-bin=mysql-bin" /etc/my.cnf
 sed -i "/\[mysqld\]/a binlog-format = 'ROW'" /etc/my.cnf
 
+# TODO i think we do not need these
 # Marvin tests dependencies
-yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs wget sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
-pip install pycrypto texttable
+#yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs wget sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
+#pip install pycrypto texttable
 
 # Setup networking
 cat > /etc/sysconfig/network-scripts/ifcfg-eth0 <<EOF
