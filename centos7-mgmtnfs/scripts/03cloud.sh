@@ -7,6 +7,10 @@ yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-net
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
 systemctl enable mariadb
 
+# Marvin tests dependencies
+yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs wget sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
+pip install pycrypto texttable
+
 # CloudStack Development Tools
 yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-server mysql-client bzip2 nfs-common uuid-runtime python-setuptools ipmitool genisoimage nfs-kernel-server quota
 
