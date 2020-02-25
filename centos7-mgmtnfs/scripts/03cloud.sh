@@ -84,6 +84,9 @@ fi
 EOF
 chmod +x /etc/libvirt/hooks/qemu
 
+# TODO FixME
+systemctl disable firewalld
+
 # Setup iptables
 iptables -I INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
