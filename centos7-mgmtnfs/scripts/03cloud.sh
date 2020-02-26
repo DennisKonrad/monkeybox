@@ -63,7 +63,7 @@ echo `date` hook/qemu "${1}" "${2}" >>/root/hook.log
 
 ### some router 
 #Guest_name=master-centos7-kvm1
-Guest_ipaddr=172.20.1.10
+Guest_ipaddr=172.20.1.2
 Host_port=(  '8001' )
 Guest_port=( '8000' )
 
@@ -95,6 +95,7 @@ systemctl disable firewalld
 iptables -I INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8096 -j ACCEPT
+iptables -I INPUT -p tcp -m tcp --dport 8250 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8787 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 1798 -j ACCEPT
