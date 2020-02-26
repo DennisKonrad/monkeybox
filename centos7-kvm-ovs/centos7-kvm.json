@@ -22,7 +22,7 @@
         [ "-m", "4096M" ],
         [ "-smp", "cpus=4" ]
       ],
-      "disk_size": 20480,
+      "disk_size": 6144,
       "format": "qcow2",
       "disk_interface": "virtio",
       "net_device": "virtio-net",
