@@ -1,7 +1,7 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl
+yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl qemu-kvm-tools
 
 cat > /etc/yum.repos.d/openstack-stein.repo << EOF
 [openstack-stein]
