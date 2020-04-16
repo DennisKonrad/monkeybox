@@ -17,6 +17,8 @@ yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-se
 # Create NFS export
 echo "/export  *(rw,async,no_root_squash,no_subtree_check)" > /etc/exports
 mkdir -p /export/testing/primary /export/testing/secondary
+systemctl enable nfs-server
+systemctl start nfs-server
 
 # Install cloudmonkey
 wget -O /bin/cmk https://github.com/apache/cloudstack-cloudmonkey/releases/download/6.0.0/cmk.linux.x86-64
