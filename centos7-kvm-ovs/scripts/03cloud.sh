@@ -5,8 +5,8 @@ yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-net
 
 cat > /etc/yum.repos.d/openstack-stein.repo << EOF
 [openstack-stein]
-name=added from: http://mirror.centos.org/centos-7/7.7.1908/cloud/x86_64/openstack-stein/
-baseurl=http://mirror.centos.org/centos-7/7.7.1908/cloud/x86_64/openstack-stein/
+name=OpenstackStein-OvS
+baseurl=http://mirror.centos.org/centos/7.8.2003/cloud/x86_64/openstack-stein/
 enabled=1
 gpgcheck=0
 EOF
