@@ -14,6 +14,14 @@ pip install pycrypto texttable
 # CloudStack Development Tools
 yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-server mysql-client bzip2 nfs-common uuid-runtime python-setuptools ipmitool genisoimage nfs-kernel-server quota
 
+# There are definitely some java versions installed that are too much now. Java 11 seems the way to go for the future
+yum install -y java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless
+SET_JAVA_PATH=$(repoquery -l java-11-openjdk-headless | grep x86_64 | grep '/bin/java')
+alternatives --set java ${SET_JAVA_PATH}
+
+SET_JAVAC_PATH=$(repoquery -l java-11-openjdk-devel | grep x86_64 | grep '/bin/javac')
+alternatives --set javac ${SET_JAVAC_PATH}
+
 # Create NFS export
 echo "/export  *(rw,async,no_root_squash,no_subtree_check)" > /etc/exports
 mkdir -p /export/testing/primary /export/testing/secondary
