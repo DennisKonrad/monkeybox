@@ -6,7 +6,6 @@ yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-net
 # Management server dependecies and services
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
 systemctl enable mariadb
-systemctl start mariadb
 
 # Marvin tests dependencies
 yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs wget sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
@@ -101,9 +100,6 @@ chmod +x /etc/libvirt/hooks/qemu
 
 # TODO FixME
 systemctl disable firewalld
-
-# TODO Setup Mariadb?
-/usr/bin/mysqladmin -u root -h localhost password 'Passwort1!'
 
 # Setup iptables
 iptables -I INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
