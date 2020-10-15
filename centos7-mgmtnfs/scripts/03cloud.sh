@@ -101,6 +101,9 @@ chmod +x /etc/libvirt/hooks/qemu
 # TODO FixME
 systemctl disable firewalld
 
+# TODO Setup Mariadb?
+/usr/bin/mysqladmin -u root -h localhost password 'Passwort1!'
+
 # Setup iptables
 iptables -I INPUT -p tcp -m tcp --dport 8000 -j ACCEPT
 iptables -I INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
