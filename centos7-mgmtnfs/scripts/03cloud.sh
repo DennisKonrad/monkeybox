@@ -1,14 +1,17 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools ebtables ethtool iproute ipset iptables openssh-clients perl qemu-img libuuid glibc nss-softokn-freebl
+yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools ebtables ethtool iproute ipset iptables openssh-clients perl qemu-img libuuid glibc nss-softokn-freebl wget
 
-# Management server dependecies and services
+# Management server dependecies and database
+wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+chmod +x mariadb_repo_setup
+sudo ./mariadb_repo_setup
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
 systemctl enable mariadb
 
 # Marvin tests dependencies
-yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs wget sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
+yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openssl-devel xz-libs sqlite sqlite-devel python-paramiko python-setuptools python-devel mysql-devel openssl-devel ncurses-devel libxslt-devel libffi-devel openssh-askpass jq mariadb git screen sshpass at vim tmux mysql-connector-python gcc gcc-c++ make patch autoconf automake binutils
 pip install pycrypto texttable
 
 # CloudStack Development Tools
