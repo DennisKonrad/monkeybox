@@ -1,7 +1,15 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y ntp java-1.8.0-openjdk-headless.x86_64 python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl qemu-kvm-tools
+yum install -y ntp python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl qemu-kvm-tools
+
+# There are definitely some java versions installed that are too much now. Java 11 seems the way to go for the future
+yum install -y java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless yum-utils
+SET_JAVA_PATH=$(repoquery -l java-11-openjdk-headless | grep x86_64 | grep '/bin/java')
+alternatives --set java ${SET_JAVA_PATH}
+
+SET_JAVAC_PATH=$(repoquery -l java-11-openjdk-devel | grep x86_64 | grep '/bin/javac')
+alternatives --set javac ${SET_JAVAC_PATH}
 
 # Management server dependecies and services
 yum install -y mariadb-server nfs-utils mysql-connector-java genisoimage
