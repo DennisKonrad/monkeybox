@@ -1,7 +1,7 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y ntp python-argparse python-netaddr net-tools ebtables ethtool iproute ipset iptables openssh-clients perl qemu-img libuuid glibc nss-softokn-freebl wget
+yum install -y ntp python-argparse net-tools ebtables ethtool iproute ipset iptables openssh-clients perl qemu-img libuuid glibc nss-softokn-freebl wget
 
 # Management server dependecies and database
 wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
