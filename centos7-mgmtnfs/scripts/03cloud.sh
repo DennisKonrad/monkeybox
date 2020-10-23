@@ -15,7 +15,7 @@ yum install -y python-pip pyOpenSSL telnet tcpdump zlib-devel bzip2-devel openss
 pip install pycrypto texttable
 
 # CloudStack Development Tools
-yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-server mysql-client bzip2 nfs-common uuid-runtime python-setuptools ipmitool genisoimage nfs-kernel-server quota
+yum install -y openjdk-8-jdk maven python-mysql.connector libmysql-java mysql-server mysql-client bzip2 nfs-common uuid-runtime python-setuptools ipmitool genisoimage nfs-kernel-server quota jq
 
 # There are definitely some java versions installed that are too much now. Java 11 seems the way to go for the future
 yum install -y java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless yum-utils
