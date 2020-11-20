@@ -15,7 +15,7 @@ alternatives --set javac ${SET_JAVAC_PATH}
 cat > /etc/yum.repos.d/openstack-stein.repo << EOF
 [openstack-stein]
 name=OpenstackStein-OvS
-baseurl=http://mirror.centos.org/centos/7.8.2003/cloud/x86_64/openstack-stein/
+baseurl=http://mirror.centos.org/centos/7.9.2009/cloud/x86_64/openstack-stein/
 enabled=1
 gpgcheck=0
 EOF
