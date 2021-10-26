@@ -12,21 +12,6 @@
       "disk_interface": "virtio",
       "disk_size": "6144M",
       "format": "qcow2",
-[root@local-kvm01 alma8.4-kvm]# cat alma-kvm.json_fixed 
-{
-  "builders": [
-    {
-      "accelerator": "kvm",
-      "boot_command": [
-        "<esc>",
-        "<wait>",
-        "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/kickstart.cfg biosdevname=0 net.ifnames=0",
-        "<enter>"
-      ],
-      "boot_wait": "10s",
-      "disk_interface": "virtio",
-      "disk_size": "6144M",
-      "format": "qcow2",
       "headless": true,
       "host_port_max": 2229,
       "host_port_min": 2222,
