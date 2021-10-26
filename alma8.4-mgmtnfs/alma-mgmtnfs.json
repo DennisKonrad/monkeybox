@@ -1,0 +1,60 @@
+{
+  "description": "AlmaLinux 8.4 x86_64 MonkeyBox Cloudstack ManagementVM",
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/00base.sh",
+        "scripts/01grub.sh",
+        "scripts/02sshd.sh",
+        "scripts/03cloud.sh",
+        "scripts/99cleanup.sh",
+        "scripts/99minimize.sh"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "qemu",
+      "accelerator": "kvm",
+      "headless": true,
+      "qemuargs": [
+        [ "-m", "4096M" ],
+        [ "-smp", "cpus=4" ]
+      ],
+      "disk_size": 40960,
+      "format": "qcow2",
+      "disk_interface": "virtio",
+      "net_device": "virtio-net",
+
+      "iso_url": "http://ftp.fau.de/almalinux/8.4/isos/x86_64/AlmaLinux-8.4-x86_64-boot.iso",
+      "iso_checksum": "76e8f56892e6d90706b142868eec51b6b8c015ec3792f8d9e0730da93a2d1162",
+      "iso_checksum_type": "sha256",
+
+      "vm_name": "monkeybox-alma8.4-mgmt",
+      "output_directory": "dist",
+
+      "http_directory": "http",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+
+      "ssh_username": "root",
+      "ssh_password": "password",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "30m",
+
+      "boot_wait": "10s",
+      "boot_command": [
+        "<esc>",
+        "<wait>",
+        "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/kickstart.cfg biosdevname=0 net.ifnames=0",
+        "<enter>"
+      ],
+
+      "shutdown_command": "shutdown -P now"
+    }
+  ]
+}
