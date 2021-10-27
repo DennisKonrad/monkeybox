@@ -38,6 +38,7 @@
       "ssh_timeout": "30m",
       "ssh_username": "root",
       "type": "qemu",
+      "vnc_bind_address": "0.0.0.0",
       "vm_name": "monkeybox-alma8.4-mgmt"
     }
   ],
