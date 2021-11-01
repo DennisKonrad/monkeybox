@@ -1,7 +1,8 @@
 set -exu
 
 # KVM and CloudStack agent dependencies
-yum install -y python3 ntp python-argparse python-netaddr net-tools bridge-utils ebtables ethtool iproute ipset iptables libvirt libvirt-python openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl qemu-kvm-tools
+# ntp, python-argpase, python-netaddr, bridge-utils, libvirt-pyton, qemu-kvm-tools could not be found
+yum install -y python3 net-tools ebtables ethtool iproute ipset iptables libvirt openssh-clients perl qemu-img qemu-kvm libuuid glibc nss-softokn-freebl 
 
 # There are definitely some java versions installed that are too much now. Java 11 seems the way to go for the future
 yum install -y java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless yum-utils
