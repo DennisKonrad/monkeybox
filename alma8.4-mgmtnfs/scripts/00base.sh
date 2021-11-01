@@ -11,7 +11,7 @@ cat > /etc/motd << EOF
 EOF
 
 # Essentials
-yum install -y tmux vim htop wget jq
+yum install -y tmux vim wget jq
 
 # Fix hostname to get from dhcp, otherwise use localhost
 hostnamectl set-hostname localhost --static
