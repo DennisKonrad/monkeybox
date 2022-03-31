@@ -4,7 +4,7 @@ yum -y update
 
 cat > /etc/motd << EOF
 
-   __?.o/  AlmaLinux 8.4 KVM MonkeyBox
+   __?.o/  Rocky Linux 8.5 KVM MonkeyBox
   (  )#    Built from https://github.com/DennisKonrad/monkeybox
  (___(_)   Happy CloudStack hacking!
 
