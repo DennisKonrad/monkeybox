@@ -1,0 +1,59 @@
+{
+  "builders": [
+    {
+      "accelerator": "kvm",
+      "boot_command": [
+        "<esc>",
+        "<wait>",
+        "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/kickstart.cfg biosdevname=0 net.ifnames=0",
+        "<enter>"
+      ],
+      "boot_wait": "10s",
+      "disk_interface": "virtio",
+      "disk_size": "6144M",
+      "format": "qcow2",
+      "headless": true,
+      "host_port_max": 2229,
+      "host_port_min": 2222,
+      "http_directory": "http",
+      "http_port_max": 10089,
+      "http_port_min": 10082,
+      "iso_checksum": "sha256:4eb2ae6b06876205f2209e4504110fe4115b37540c21ecfbbc0ebc11084cb779",
+      "iso_url": "https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8.5-x86_64-minimal.iso",
+      "net_device": "virtio-net",
+      "output_directory": "dist",
+      "qemuargs": [
+        [
+          "-m",
+          "4096M"
+        ],
+        [
+          "-smp",
+          "cpus=4"
+        ]
+      ],
+      "shutdown_command": "shutdown -P now",
+      "ssh_password": "password",
+      "ssh_port": 22,
+      "ssh_timeout": "30m",
+      "ssh_username": "root",
+      "type": "qemu",
+      "vnc_bind_address": "0.0.0.0",
+      "vm_name": "rocky8.5-kvm-ovs"
+    }
+  ],
+  "description": "Rocky Linux 8.5 86_64 MonkeyBox KVM with OvS",
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/00base.sh",
+        "scripts/01grub.sh",
+        "scripts/02sshd.sh",
+        "scripts/03cloud.sh",
+        "scripts/99cleanup.sh",
+        "scripts/99minimize.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
